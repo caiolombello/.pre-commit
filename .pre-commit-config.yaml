@@ -1,0 +1,48 @@
+repos:
+  # GitLeaks para detectar segredos hardcoded
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.4
+    hooks:
+      - id: gitleaks
+
+  # Verificações genéricas e utilitários para várias linguagens
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace     # Remove espaços em branco desnecessários
+      - id: end-of-file-fixer       # Garante que arquivos terminem com uma nova linha
+      - id: check-yaml              # Verifica a integridade dos arquivos YAML
+      - id: check-merge-conflict    # Detecta conflitos de merge
+      - id: detect-private-key      # Detecta chaves privadas no repositório
+
+  # Linter para Python usando Ruff
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.4
+    hooks:
+      - id: ruff
+      - id: ruff-format
+
+  # ESLint para JavaScript
+  - repo: https://github.com/pre-commit/mirrors-eslint
+    rev: v9.10.0
+    hooks:
+      - id: eslint
+
+  # Verificador de Dockerfile usando Hadolint
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.13.0-beta
+    hooks:
+      - id: hadolint
+
+  # Terraform: Verificador de sintaxe e estilo
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.94.2
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_validate
+
+  # Checador de arquivos JSON
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-json
